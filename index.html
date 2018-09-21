@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<!-- start head -->
+	<head>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width">
+	  <title>Brad's First Vue App</title>
+	  
+	  <!-- bootstrap 4 cdn -->
+	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	  <!-- override and add onto bootstrap -->
+	  <link rel="stylesheet" href="main.css"> 
+	  <!-- vue cdn from https://vuejs.org -->
+	  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+	</head>
+	
+	<!-- start body -->
+	<body>
+		<section class="main">
+			<div class="container">
+				<div class="row">
+					<div id="app" class="col-xs-12">
+					<!-- display vue data -->
+						<h1>{{message}}</h1>
+						<div class="card card-border-adjust">
+							<div class="card-header">
+								JavaScript Frameworks
+							</div>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item" v-for="f in frameworks">
+									<span style="vertical-align: middle;">
+										<span class="bold">{{f.name}}</span> 
+										has 
+										<!-- toggle red color text when votes is 0 -->
+										<span v-bind:class="{'losing' : (f.votes == 0)}">
+											{{f.votes}} votes!
+										</span>
+										<!-- v-on event listener in vue -->
+										<button class="btn btn-primary float-right" v-on:click="voteFor(f)">Vote</button>
+										<a href="#" class="btn btn-danger float-right" v-if="editMode" v-on:click="remove(f)">Delete</a>
+									</span>
+								</li>
+							</ul>
+						</div>
+						<div class="alert alert-success winner-adjust">
+							<p>Current Winner(s): {{ winnerString }}</p>
+						</div>
+						<div class="alert alert-danger alert-border-adjust">
+							<p>Current Loser(s): {{ loserString }}</p>
+						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<button class="btn btn-outline-primary" type="button" v-on:click="toggleEditMode">{{ editMode ? 'Done' : 'Edit' }} </button>
+							</div>
+							<input type="text" class="form-control" placeholder="Add new" v-if="editMode" v-on:keyup.enter="addNew">
+						</div>
+					</div>
+				</div><!-- ./row -->
+			</div><!-- ./container -->
+		</section>
+		<!-- include vue js file -->
+		<script src="script.js"></script>
+	</body>
+	
+</html>

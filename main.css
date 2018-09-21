@@ -1,0 +1,36 @@
+#app {
+	margin-top: 2em;
+}
+
+.card-border-adjust {
+	border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.alert-border-adjust {
+	border-bottom-left-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+	border-top-left-radius: 0rem;
+    border-top-right-radius: 0rem;
+}
+
+.winner-adjust {
+	border-radius: 0rem;
+	margin-bottom: 0rem;
+}
+
+.list-group-item > span > a {
+	margin-right: 5px;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.losing {
+	color: #ff0000;
+}
+
+.winning {
+	color: #0B6623
+}
